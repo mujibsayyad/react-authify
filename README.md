@@ -22,8 +22,10 @@ yarn add react-authify
 
 Wrap your application with the `ReactAuthify` component and use the `useAuthContext` hook to access the authentication context in any component that needs it.
 
+The `login` function checks if a token is stored in the `localStorage` of the browser. If a token exists, it retrieves the token and parses it into a JavaScript object. If the token has not expired, the user is set as logged in and the token is stored in the component state using the `setUser`, `setIsLoggedIn`, and `setToken` functions. If the token has expired, it is removed from the `localStorage` and the user is set as logged out with an empty token and user object.
+
 ```javascript
-import { useAuthContext } from 'react-authify';
+import { ReactAuthify, useAuthContext } from 'react-authify';
 
 function App() {
   return (
@@ -38,6 +40,10 @@ import { useAuthContext } from 'react-authify';
 
 function MainComponent() {
   const { user, isLoggedIn, token, loginUser, logout } = useAuthContext();
+
+	useEffect(() => {
+		login();
+	}, []);
 
   return (
     <>
