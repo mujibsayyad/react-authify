@@ -1,0 +1,35 @@
+{
+  "name": "react-authify",
+  "version": "1.0.0",
+  "author": "Mujib Sayyad <github.com/mujibsayyad>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "keywords": [
+    "react login, react auth, mern login, mern auth"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "dev": "vite",
+    "tsc": "tsc",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vite-plugin-dts": "^2.2.0"
+  }
+}
