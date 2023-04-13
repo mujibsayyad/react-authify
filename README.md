@@ -57,7 +57,7 @@ function MainComponent() {
   const { logout } = useAuthContext();
 
   useEffect(() => {
-	login();
+  login();
   }, []);
 
   return (
