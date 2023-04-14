@@ -7,10 +7,10 @@ export interface AuthContextInterface {
     token: string | null;
     message: string;
     loginUser: (url: string, data: LoginData) => void;
-    login: () => void;
+    isLogin: () => void;
     logout: () => void;
 }
-export type AuthProviderProps = {
+type AuthProviderProps = {
     children: React.ReactNode;
 };
 type LibraryProps = {

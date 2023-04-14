@@ -1,21 +1,21 @@
-import { jsx as h } from "react/jsx-runtime";
-import { createContext as v, useState as s, useContext as C } from "react";
-import { postData as D } from "./hooks/useFetchAPI.js";
-const c = v({
+import { jsx as L } from "react/jsx-runtime";
+import { createContext as h, useState as s, useContext as v } from "react";
+import { postData as C } from "./hooks/useFetchAPI.js";
+const c = h({
   user: {},
   isLoggedIn: !1,
   token: null,
   message: "",
   loginUser: () => {
   },
-  login: () => {
+  isLogin: () => {
   },
   logout: () => {
   }
 }), T = ({ children: g }) => {
   const [i, n] = s({}), [u, r] = s(!1), [m, a] = s(null), [k, f] = s(""), I = async (t, e, p = 12) => {
     try {
-      const o = await D(
+      const o = await C(
         t,
         e
       ), { userId: x, token: y } = o, d = Date.now() + p * 60 * 60 * 1e3;
@@ -32,9 +32,9 @@ const c = v({
       n(e), r(!0), a(e.token), Date.now() > e.expiryTime && (localStorage.removeItem("token"), r(!1), a(null), n({}));
     }
   }, S = () => {
-    localStorage.removeItem("token"), r(!1), a(""), n({});
+    localStorage.removeItem("token"), r(!1), a(null), n({});
   };
-  return /* @__PURE__ */ h(
+  return /* @__PURE__ */ L(
     c.Provider,
     {
       value: {
@@ -43,13 +43,13 @@ const c = v({
         token: m,
         message: k,
         loginUser: I,
-        login: l,
+        isLogin: l,
         logout: S
       },
       children: g
     }
   );
-}, U = () => C(c);
+}, U = () => v(c);
 export {
   T as ReactAuthify,
   U as useAuthContext

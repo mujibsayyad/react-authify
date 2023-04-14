@@ -2,9 +2,13 @@
 
 ### Authentication Library for MERN Stack
 
-React-Authify is a simple library for implementing authentication in a MERN (MongoDB, Express, React, Node.js) stack. It provides an interface, `AuthContextInterface`, with properties such as `user`, `isLoggedIn`, and `token`.
+React-Authify is a simple library for implementing authentication in a MERN (MongoDB, Express, React, Node.js) stack. It provides an interface, `AuthContextInterface`, with properties such as `user, isLoggedIn, token, message, loginUser, isLogin, logout`
 
 Overall, this library provides a simple and easy-to-use authentication solution for MERN stack applications, allowing developers to implement login and logout functionality without writing extra code.
+
+## Integration
+
+To use react-authify for authentication in your backend, check out the [node-authify](https://www.npmjs.com/package/node-authify) npm package. It provides easy-to-use authentication middleware for Node.js and works seamlessly with react-authify.
 
 ## Installation
 
@@ -47,17 +51,19 @@ function MainComponent() {
 }
 ```
 
-The `login` function checks if a token is stored in the `localStorage` of the browser. If a token exists, it retrieves the token and parses it into a JavaScript object. If the token has not expired, the user is set as logged in and the token is stored in the component state using the `setUser`, `setIsLoggedIn`, and `setToken` functions. If the token has expired, it is removed from the `localStorage` and the user is set as logged out with an empty token and user object.
+### isLogin Functionality
+
+The `isLogin` function checks if a token is stored in the `localStorage` of the browser. If a token exists, it retrieves the token and parses it into a JavaScript object. If the token has not expired, the user is set as logged in and the token is stored in the component state using the `setUser`, `setIsLoggedIn`, and `setToken` functions. If the token has expired, it is removed from the `localStorage` and the user is set as logged out with an empty token and user object.
 
 ```javascript
 // MainComponent.jsx
 import { useAuthContext } from 'react-authify';
 
 function MainComponent() {
-  const { logout } = useAuthContext();
+  const { isLogin } = useAuthContext();
 
   useEffect(() => {
-    login();
+    isLogin();
   }, []);
 
   return (

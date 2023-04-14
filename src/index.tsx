@@ -12,7 +12,7 @@ export interface AuthContextInterface {
   message: string;
 
   loginUser: (url: string, data: LoginData) => void;
-  login: () => void;
+  isLogin: () => void;
   logout: () => void;
 }
 
@@ -32,7 +32,7 @@ const AuthContext = createContext<AuthContextInterface>({
   message: '',
 
   loginUser: () => {},
-  login: () => {},
+  isLogin: () => {},
   logout: () => {},
 });
 
@@ -67,7 +67,7 @@ export const ReactAuthify = ({ children }: LibraryProps) => {
         JSON.stringify({ userId, token, expiryTime })
       );
 
-      login();
+      isLogin();
       // navigate('/');
     } catch (err) {
       console.error('Error:', (err as Error).message);
@@ -75,7 +75,7 @@ export const ReactAuthify = ({ children }: LibraryProps) => {
     }
   };
 
-  const login = () => {
+  const isLogin = () => {
     if (localStorage.getItem('token')) {
       const localStorageValue = localStorage.getItem('token');
       const localValue = localStorageValue
@@ -100,7 +100,7 @@ export const ReactAuthify = ({ children }: LibraryProps) => {
   const logout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    setToken('');
+    setToken(null);
     setUser({});
   };
 
@@ -112,7 +112,7 @@ export const ReactAuthify = ({ children }: LibraryProps) => {
         token,
         message,
         loginUser,
-        login,
+        isLogin,
         logout,
       }}
     >
